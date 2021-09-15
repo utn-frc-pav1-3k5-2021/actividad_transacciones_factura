@@ -7,7 +7,7 @@
 
 **1.1. Ejecutar comando clone para descargar repositorio:** 
 ```sh
-$ git clone https://github.com/utn-frc-pav1-3k5-2020/actividad_transacciones_factura
+$ git clone https://github.com/utn-frc-pav1-3k5-2021/actividad_transacciones_factura
 ```
 **1.2. Ubicarse en la carpeta generada con el nombre del repositorio: 
 
