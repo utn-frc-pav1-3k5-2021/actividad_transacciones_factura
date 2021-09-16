@@ -56,8 +56,6 @@ namespace SistemaVentas.DataAccessLayer
         {
             List<Cliente> listadoClientes = new List<Cliente>();
 
-            //            var strSql = "SELECT id_cliente, nombre_cliente FROM Clientes WHERE borrado = 0";
-
             var strSql = "SELECT C.id_cliente, C.cuit, C.nombre_local, C.nombre_cliente, C.domicilio_calle, "
                                         + "C.domicilio_numero, C.telefono, B.id_barrio, B.nombre AS barrio, E.descripcion AS estado, "
                                         + "E.id_estadoc, T.id_tipoc, B.ciudad, Ciu.nombre AS nomciu, "
@@ -107,23 +105,12 @@ namespace SistemaVentas.DataAccessLayer
         {
             List<Cliente> listadoClientes = new List<Cliente>();
 
-            //            var strSql = "SELECT C.id_cliente, C.nombre_local, C.nombre_cliente, C.domicilio_calle, "
-            //                                        + "C.domicilio_numero, C.telefono, B.id_barrio, B.nombre AS barrio, "
-            //                                        + "E.id_estadoc, E.descripcion AS estado, "
-            //                                        + "T.id_tipoc, T.descripcion AS tipo, C.fecha_registro, C.email "
-            //                                    + "FROM Clientes C "
-            //                                        + "INNER JOIN Barrios B ON B.id_barrio = C.barrio "
-            //                                        + "INNER JOIN EstadoCliente E ON E.id_estadoc = C.estado_cliente "
-            //                                        + "INNER JOIN TipoCliente T ON T.id_tipoC = C.tipo_cliente "
-            //                                    + "WHERE C.borrado = 0 ";
-
-            var strSql = "SELECT C.id_cliente, C.cuit, C.nombre_local, C.nombre_cliente, C.domicilio_calle, "
+            var strSql = "SELECT C.id_cliente, C.nombre_local, C.nombre_cliente, C.domicilio_calle, "
                                         + "C.domicilio_numero, C.telefono, B.id_barrio, B.nombre AS barrio, "
-                                        + "E.id_estadoc, E.descripcion AS estado, B.ciudad, Ciu.nombre AS nomciu, "
+                                        + "E.id_estadoc, E.descripcion AS estado, "
                                         + "T.id_tipoc, T.descripcion AS tipo, C.fecha_registro, C.email "
                                     + "FROM Clientes C "
                                         + "INNER JOIN Barrios B ON B.id_barrio = C.barrio "
-                                        + "INNER JOIN Ciudades Ciu ON B.ciudad = Ciu.id_ciudad "
                                         + "INNER JOIN EstadoCliente E ON E.id_estadoc = C.estado_cliente "
                                         + "INNER JOIN TipoCliente T ON T.id_tipoC = C.tipo_cliente "
                                     + "WHERE C.borrado = 0 ";

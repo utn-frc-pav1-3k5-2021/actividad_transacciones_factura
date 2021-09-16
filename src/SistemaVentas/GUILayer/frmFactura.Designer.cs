@@ -29,6 +29,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblTipoFact = new System.Windows.Forms.Label();
             this.lblFecha = new System.Windows.Forms.Label();
             this.lblCliente = new System.Windows.Forms.Label();
@@ -53,12 +59,6 @@
             this._btnQuitar = new System.Windows.Forms.Button();
             this._btnAgregar = new System.Windows.Forms.Button();
             this.dgvDetalle = new System.Windows.Forms.DataGridView();
-            this.NroItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CodArt = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Importe = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this._txtPrecio = new System.Windows.Forms.TextBox();
             this.lblPrecio = new System.Windows.Forms.Label();
             this._lblCantidad = new System.Windows.Forms.Label();
@@ -69,6 +69,12 @@
             this.btnNuevo = new System.Windows.Forms.Button();
             this.btnGrabar = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
+            this.NroItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CodArt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Importe = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dpbDetalle.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetalle)).BeginInit();
             this.SuspendLayout();
@@ -138,7 +144,7 @@
             "C"});
             this.cboTipoFact.Location = new System.Drawing.Point(84, 23);
             this.cboTipoFact.Name = "cboTipoFact";
-            this.cboTipoFact.Size = new System.Drawing.Size(121, 21);
+            this.cboTipoFact.Size = new System.Drawing.Size(143, 21);
             this.cboTipoFact.TabIndex = 0;
             // 
             // cboCliente
@@ -147,11 +153,12 @@
             this.cboCliente.FormattingEnabled = true;
             this.cboCliente.Location = new System.Drawing.Point(84, 50);
             this.cboCliente.Name = "cboCliente";
-            this.cboCliente.Size = new System.Drawing.Size(121, 21);
+            this.cboCliente.Size = new System.Drawing.Size(143, 21);
             this.cboCliente.TabIndex = 2;
             // 
             // txtDireccion
             // 
+            this.txtDireccion.Enabled = false;
             this.txtDireccion.Location = new System.Drawing.Point(325, 50);
             this.txtDireccion.Name = "txtDireccion";
             this.txtDireccion.Size = new System.Drawing.Size(221, 20);
@@ -199,6 +206,7 @@
             this.txtImporteTotal.Name = "txtImporteTotal";
             this.txtImporteTotal.Size = new System.Drawing.Size(100, 20);
             this.txtImporteTotal.TabIndex = 27;
+            this.txtImporteTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // txtDescuento
             // 
@@ -206,6 +214,8 @@
             this.txtDescuento.Name = "txtDescuento";
             this.txtDescuento.Size = new System.Drawing.Size(100, 20);
             this.txtDescuento.TabIndex = 26;
+            this.txtDescuento.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtDescuento.Leave += new System.EventHandler(this.TxtDescuento_Leave);
             // 
             // txtSubtotal
             // 
@@ -214,6 +224,7 @@
             this.txtSubtotal.Name = "txtSubtotal";
             this.txtSubtotal.Size = new System.Drawing.Size(100, 20);
             this.txtSubtotal.TabIndex = 25;
+            this.txtSubtotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // lblImporteTotal
             // 
@@ -244,13 +255,13 @@
             // 
             // _txtCantidad
             // 
-            this._txtCantidad.Enabled = false;
             this._txtCantidad.Location = new System.Drawing.Point(267, 29);
             this._txtCantidad.Mask = "99999";
             this._txtCantidad.Name = "_txtCantidad";
             this._txtCantidad.Size = new System.Drawing.Size(41, 20);
             this._txtCantidad.TabIndex = 1;
             this._txtCantidad.ValidatingType = typeof(int);
+            this._txtCantidad.Leave += new System.EventHandler(this._txtCantidad_Leave);
             // 
             // _txtImporte
             // 
@@ -277,6 +288,7 @@
             this._btnCancelar.Size = new System.Drawing.Size(38, 36);
             this._btnCancelar.TabIndex = 7;
             this._btnCancelar.UseVisualStyleBackColor = true;
+            this._btnCancelar.Click += new System.EventHandler(this._btnCancelar_Click);
             // 
             // _btnQuitar
             // 
@@ -286,6 +298,7 @@
             this._btnQuitar.Size = new System.Drawing.Size(38, 36);
             this._btnQuitar.TabIndex = 6;
             this._btnQuitar.UseVisualStyleBackColor = true;
+            this._btnQuitar.Click += new System.EventHandler(this._btnQuitar_Click);
             // 
             // _btnAgregar
             // 
@@ -295,11 +308,20 @@
             this._btnAgregar.Size = new System.Drawing.Size(36, 36);
             this._btnAgregar.TabIndex = 5;
             this._btnAgregar.UseVisualStyleBackColor = true;
+            this._btnAgregar.Click += new System.EventHandler(this._btnAgregar_Click);
             // 
             // dgvDetalle
             // 
             this.dgvDetalle.AllowUserToAddRows = false;
             this.dgvDetalle.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle19.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDetalle.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle19;
             this.dgvDetalle.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDetalle.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.NroItem,
@@ -308,55 +330,29 @@
             this.Cantidad,
             this.Precio,
             this.Importe});
+            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle23.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle23.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle23.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle23.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle23.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvDetalle.DefaultCellStyle = dataGridViewCellStyle23;
             this.dgvDetalle.Location = new System.Drawing.Point(13, 61);
             this.dgvDetalle.MultiSelect = false;
             this.dgvDetalle.Name = "dgvDetalle";
             this.dgvDetalle.ReadOnly = true;
+            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle24.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle24.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle24.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle24.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle24.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle24.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDetalle.RowHeadersDefaultCellStyle = dataGridViewCellStyle24;
             this.dgvDetalle.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvDetalle.Size = new System.Drawing.Size(754, 252);
             this.dgvDetalle.TabIndex = 7;
-            // 
-            // NroItem
-            // 
-            this.NroItem.HeaderText = "Nro. Ítem";
-            this.NroItem.Name = "NroItem";
-            this.NroItem.ReadOnly = true;
-            this.NroItem.Width = 70;
-            // 
-            // CodArt
-            // 
-            this.CodArt.HeaderText = "Cod. Art.";
-            this.CodArt.Name = "CodArt";
-            this.CodArt.ReadOnly = true;
-            this.CodArt.Width = 70;
-            // 
-            // Descripcion
-            // 
-            this.Descripcion.HeaderText = "Descripción";
-            this.Descripcion.Name = "Descripcion";
-            this.Descripcion.ReadOnly = true;
-            this.Descripcion.Width = 250;
-            // 
-            // Cantidad
-            // 
-            this.Cantidad.HeaderText = "Cantidad";
-            this.Cantidad.Name = "Cantidad";
-            this.Cantidad.ReadOnly = true;
-            this.Cantidad.Width = 70;
-            // 
-            // Precio
-            // 
-            this.Precio.HeaderText = "Precio";
-            this.Precio.Name = "Precio";
-            this.Precio.ReadOnly = true;
-            this.Precio.Width = 70;
-            // 
-            // Importe
-            // 
-            this.Importe.HeaderText = "Importe";
-            this.Importe.Name = "Importe";
-            this.Importe.ReadOnly = true;
-            this.Importe.Width = 150;
             // 
             // _txtPrecio
             // 
@@ -413,6 +409,7 @@
             // 
             // txtCUIT
             // 
+            this.txtCUIT.Enabled = false;
             this.txtCUIT.Location = new System.Drawing.Point(626, 50);
             this.txtCUIT.Mask = "00-00000000-0";
             this.txtCUIT.Name = "txtCUIT";
@@ -422,21 +419,22 @@
             // btnNuevo
             // 
             this.btnNuevo.Image = global::SistemaVentas.Properties.Resources.nuevo1;
-            this.btnNuevo.Location = new System.Drawing.Point(14, 494);
+            this.btnNuevo.Location = new System.Drawing.Point(12, 494);
             this.btnNuevo.Name = "btnNuevo";
             this.btnNuevo.Size = new System.Drawing.Size(75, 36);
             this.btnNuevo.TabIndex = 13;
             this.btnNuevo.UseVisualStyleBackColor = true;
+            this.btnNuevo.Click += new System.EventHandler(this.BtnNuevo_Click);
             // 
             // btnGrabar
             // 
             this.btnGrabar.Image = global::SistemaVentas.Properties.Resources.grabar3;
-            this.btnGrabar.Location = new System.Drawing.Point(95, 495);
+            this.btnGrabar.Location = new System.Drawing.Point(93, 495);
             this.btnGrabar.Name = "btnGrabar";
             this.btnGrabar.Size = new System.Drawing.Size(75, 35);
             this.btnGrabar.TabIndex = 14;
             this.btnGrabar.UseVisualStyleBackColor = true;
-            this.btnGrabar.Click += new System.EventHandler(this.btnGrabar_Click);
+            this.btnGrabar.Click += new System.EventHandler(this.BtnGrabar_Click);
             // 
             // btnSalir
             // 
@@ -447,6 +445,60 @@
             this.btnSalir.TabIndex = 15;
             this.btnSalir.UseVisualStyleBackColor = true;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
+            // 
+            // NroItem
+            // 
+            this.NroItem.DataPropertyName = "NroItem";
+            this.NroItem.HeaderText = "Nro. Ítem";
+            this.NroItem.Name = "NroItem";
+            this.NroItem.ReadOnly = true;
+            this.NroItem.Width = 70;
+            // 
+            // CodArt
+            // 
+            this.CodArt.DataPropertyName = "IdProducto";
+            this.CodArt.HeaderText = "Cod. Art.";
+            this.CodArt.Name = "CodArt";
+            this.CodArt.ReadOnly = true;
+            this.CodArt.Width = 70;
+            // 
+            // Descripcion
+            // 
+            this.Descripcion.DataPropertyName = "ProductoDescripcion";
+            dataGridViewCellStyle20.NullValue = null;
+            this.Descripcion.DefaultCellStyle = dataGridViewCellStyle20;
+            this.Descripcion.HeaderText = "Descripción";
+            this.Descripcion.Name = "Descripcion";
+            this.Descripcion.ReadOnly = true;
+            this.Descripcion.Width = 250;
+            // 
+            // Cantidad
+            // 
+            this.Cantidad.DataPropertyName = "Cantidad";
+            this.Cantidad.HeaderText = "Cantidad";
+            this.Cantidad.Name = "Cantidad";
+            this.Cantidad.ReadOnly = true;
+            this.Cantidad.Width = 70;
+            // 
+            // Precio
+            // 
+            this.Precio.DataPropertyName = "PrecioUnitario";
+            dataGridViewCellStyle21.Format = "C2";
+            this.Precio.DefaultCellStyle = dataGridViewCellStyle21;
+            this.Precio.HeaderText = "Precio";
+            this.Precio.Name = "Precio";
+            this.Precio.ReadOnly = true;
+            this.Precio.Width = 70;
+            // 
+            // Importe
+            // 
+            this.Importe.DataPropertyName = "Importe";
+            dataGridViewCellStyle22.Format = "C2";
+            this.Importe.DefaultCellStyle = dataGridViewCellStyle22;
+            this.Importe.HeaderText = "Importe";
+            this.Importe.Name = "Importe";
+            this.Importe.ReadOnly = true;
+            this.Importe.Width = 150;
             // 
             // frmFactura
             // 
@@ -473,7 +525,7 @@
             this.MinimizeBox = false;
             this.Name = "frmFactura";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Formulario Factura";
+            this.Text = "Alta Factura";
             this.Load += new System.EventHandler(this.frmFactura_Load);
             this.dpbDetalle.ResumeLayout(false);
             this.dpbDetalle.PerformLayout();
@@ -510,12 +562,6 @@
         private System.Windows.Forms.Button btnNuevo;
         private System.Windows.Forms.Button btnGrabar;
         private System.Windows.Forms.Button btnSalir;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NroItem;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CodArt;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Descripcion;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Precio;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Importe;
         private System.Windows.Forms.TextBox _txtImporte;
         private System.Windows.Forms.Label lblImporte;
         private System.Windows.Forms.MaskedTextBox _txtCantidad;
@@ -525,5 +571,11 @@
         private System.Windows.Forms.Label lblImporteTotal;
         private System.Windows.Forms.Label lblDescuento;
         private System.Windows.Forms.Label lblSubtotal;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NroItem;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CodArt;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Descripcion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Precio;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Importe;
     }
 }
