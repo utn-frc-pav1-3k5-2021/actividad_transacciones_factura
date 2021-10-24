@@ -10,7 +10,7 @@ public class DataManager
     private static DataManager instance;
     public DataManager()
     {
-        string_conexion = "Data Source=.\\SQLEXPRESS;Initial Catalog=BugTracker;Integrated Security=true;";
+        string_conexion = "Data Source=.\\SQLEXPRESS;Initial Catalog=SistemaVentas;Integrated Security=true;";
     }
 
     // Con el siguiente método aplicamos el patrón singleton
@@ -46,7 +46,7 @@ public class DataManager
             cmd.Connection = dbConnection;
             cmd.CommandType = CommandType.Text;
             cmd.CommandText = strSql;
-
+            
             //Agregamos a la colección de parámetros del comando los filtros recibidos
             if (prs != null)
             {

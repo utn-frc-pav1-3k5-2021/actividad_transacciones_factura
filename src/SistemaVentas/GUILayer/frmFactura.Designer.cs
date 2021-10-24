@@ -149,6 +149,7 @@
             this.cboCliente.Name = "cboCliente";
             this.cboCliente.Size = new System.Drawing.Size(121, 21);
             this.cboCliente.TabIndex = 2;
+            this.cboCliente.SelectedIndexChanged += new System.EventHandler(this.frmFactura_Load);
             // 
             // txtDireccion
             // 
@@ -277,6 +278,7 @@
             this._btnCancelar.Size = new System.Drawing.Size(38, 36);
             this._btnCancelar.TabIndex = 7;
             this._btnCancelar.UseVisualStyleBackColor = true;
+            this._btnCancelar.Click += new System.EventHandler(this._btnCancelar_Click);
             // 
             // _btnQuitar
             // 
@@ -286,6 +288,7 @@
             this._btnQuitar.Size = new System.Drawing.Size(38, 36);
             this._btnQuitar.TabIndex = 6;
             this._btnQuitar.UseVisualStyleBackColor = true;
+            this._btnQuitar.Click += new System.EventHandler(this._btnQuitar_Click);
             // 
             // _btnAgregar
             // 
@@ -295,6 +298,7 @@
             this._btnAgregar.Size = new System.Drawing.Size(36, 36);
             this._btnAgregar.TabIndex = 5;
             this._btnAgregar.UseVisualStyleBackColor = true;
+            this._btnAgregar.Click += new System.EventHandler(this._btnAgregar_Click);
             // 
             // dgvDetalle
             // 
@@ -401,6 +405,7 @@
             this._cboArticulo.Name = "_cboArticulo";
             this._cboArticulo.Size = new System.Drawing.Size(133, 21);
             this._cboArticulo.TabIndex = 0;
+            this._cboArticulo.SelectedIndexChanged += new System.EventHandler(this.frmFactura_Load);
             // 
             // lblCUIT
             // 
